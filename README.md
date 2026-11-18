@@ -51,7 +51,7 @@ Restart Claude Code (or run `/reload-plugins`), open your clone of the kit, and 
 
 To update later: `/plugin marketplace update lowpoly-kit`.
 
-Without the plugin system, copy the skill folder instead: `cp -r skills/lowpoly-kit ~/.claude/skills/`.
+Without the plugin system, copy the skill folder instead: `cp -r plugin/skills/lowpoly-kit ~/.claude/skills/`.
 
 ## Your first shot
 

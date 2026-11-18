@@ -7,7 +7,7 @@
     {
       "name": "lowpoly-kit",
       "description": "Teaches Claude to build vertical low-poly 3D shots with lowpoly-kit (characters, gestures, walking, sets, lighting).",
-      "source": "./",
+      "source": "./plugin",
       "category": "productivity"
     }
   ]

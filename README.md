@@ -3,11 +3,11 @@
 **Code-generated 3D low-poly characters, motion and sets for vertical videos.**
 Built on [Remotion](https://www.remotion.dev) + [react-three-fiber](https://r3f.docs.pmnd.rs). Every frame is a pure function of the frame number, so renders are deterministic and everything is editable as code: no Blender, no keyframing UI.
 
+<p align="center"><img src="media/example.png" width="600" alt="Example short: wave in the suburbs, walk-in downtown, gasp in the office" /></p>
 <p align="center">
-  <img src="media/example.gif" width="300" alt="Example short: wave, walk-in + shrug, gasp" />
-  <img src="media/locomotion.gif" width="300" alt="Walk, run, hop and sit" />
+  <img src="media/locomotion.gif" width="296" alt="Walk, run, hop and sit" />
+  <img src="media/gestures.gif" width="296" alt="All 21 gestures, one at a time" />
 </p>
-<p align="center"><img src="media/gestures.gif" width="640" alt="Gesture library" /></p>
 
 ## What's inside
 
@@ -35,6 +35,23 @@ npm run example    # renders out/example.mp4
 ```
 
 Requires Node 18+. Rendering uses Chrome's GPU (`--gl=angle`); on Linux servers without a GPU use `--gl=swangle`.
+
+## Use it with Claude Code
+
+The repo is also a Claude Code plugin. Its `lowpoly-kit` skill points Claude at the kit's docs, components and rules, so you can ask for shots in plain words.
+
+In Claude Code, run:
+
+```
+/plugin marketplace add TachiBae/lowpoly-kit
+/plugin install lowpoly-kit@lowpoly-kit
+```
+
+Restart Claude Code (or run `/reload-plugins`), open your clone of the kit, and ask, for example: *"Make a 2-second medium shot in the office where the scientist gasps."* The skill loads by itself; you can also call it with `/lowpoly-kit:lowpoly-kit`.
+
+To update later: `/plugin marketplace update lowpoly-kit`.
+
+Without the plugin system, copy the skill folder instead: `cp -r skills/lowpoly-kit ~/.claude/skills/`.
 
 ## Your first shot
 
@@ -78,6 +95,7 @@ Register it in `src/Root.tsx` with `withLook(MyShot, 'v2')` (see `ExampleShort` 
 |---|---|
 | `ActLab` | idle levels (calm / alert / nervous), then walk-in + wave, run, hop, sit |
 | `GestureLab` | every gesture, three at a time |
+| `GestureReel` | every gesture, one at a time, vertical (the README GIF) |
 | `GestureCheck` | gestures frozen at their hold frame from three angles |
 | `DaylightLab2` | reference framings for each shot recipe |
 | `SetLab`, `PresetLab`, `EdgeLab` | settings, lighting presets, edge styles |

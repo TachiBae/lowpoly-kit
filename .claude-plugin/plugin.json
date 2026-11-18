@@ -1,0 +1,10 @@
+{
+  "name": "lowpoly-kit",
+  "version": "0.1.0",
+  "description": "Build vertical low-poly 3D shots in Remotion with lowpoly-kit.",
+  "homepage": "https://github.com/TachiBae/lowpoly-kit",
+  "repository": "https://github.com/TachiBae/lowpoly-kit",
+  "license": "MIT",
+  "author": {"name": "TachiBae", "url": "https://github.com/TachiBae"},
+  "skills": "./skills/"
+}

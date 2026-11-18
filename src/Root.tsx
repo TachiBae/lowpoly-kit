@@ -23,10 +23,11 @@ import {SetLab, SETLAB_FRAMES} from './kit/SetLab';
 const SLab = withLook(() => <SetLab />, 'v2');
 import {HandLab, HANDLAB_FRAMES} from './kit/HandLab';
 import {ActLab, ACTLAB_FRAMES} from './kit/ActLab';
-import {GestureLab, GESTURELAB_FRAMES} from './kit/GestureLab';
+import {GestureLab, GESTURELAB_FRAMES, gestureLabFrames} from './kit/GestureLab';
 import {GestureCheck, GESTURECHECK_FRAMES} from './kit/GestureCheck';
 const GestureCheckV2 = withLook(() => <GestureCheck />, 'v2');
 const GestureLabV2 = withLook(() => <GestureLab />, 'v2');
+const GestureReelV2 = withLook(() => <GestureLab per={1} />, 'v2');
 const ActLabV2 = withLook(() => <ActLab />, 'v2');
 const HLab = withLook(() => <HandLab />, 'v2');
 const BTest = withLook(() => <BackdropTest />, 'v2');
@@ -61,6 +62,7 @@ export const RemotionRoot: React.FC = () => (
       <Composition id="SetLab" component={SLab} durationInFrames={SETLAB_FRAMES} {...vertical} />
       <Composition id="ActLab" component={ActLabV2} durationInFrames={ACTLAB_FRAMES} {...vertical} />
       <Composition id="GestureLab" component={GestureLabV2} durationInFrames={GESTURELAB_FRAMES} fps={30} width={1920} height={1080} />
+      <Composition id="GestureReel" component={GestureReelV2} durationInFrames={gestureLabFrames(1)} {...vertical} />
       <Composition id="GestureCheck" component={GestureCheckV2} durationInFrames={GESTURECHECK_FRAMES} fps={30} width={1920} height={1080} />
       <Composition id="HandLab" component={HLab} durationInFrames={HANDLAB_FRAMES} fps={30} width={1920} height={1080} />
       <Composition id="DaylightLab-outline" component={DLOutline} durationInFrames={DAYLIGHTLAB_FRAMES} {...vertical} />

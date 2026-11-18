@@ -5,8 +5,8 @@ Built on [Remotion](https://www.remotion.dev) + [react-three-fiber](https://r3f.
 
 <p align="center"><img src="media/example.png" width="600" alt="Example short: wave in the suburbs, walk-in downtown, gasp in the office" /></p>
 <p align="center">
-  <img src="media/locomotion.gif" width="296" alt="Walk, run, hop and sit" />
-  <img src="media/gestures.gif" width="296" alt="All 21 gestures, one at a time" />
+  <img src="media/locomotion.gif" width="49%" alt="Walk, run, hop and sit" />
+  <img src="media/gestures.gif" width="49%" alt="All 21 gestures, one at a time" />
 </p>
 
 ## What's inside

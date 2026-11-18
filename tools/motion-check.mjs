@@ -1,0 +1,23 @@
+// Run: node tools/motion-check.mjs  (bundles motion.ts with esbuild, asserts core behaviour)
+import {build} from 'esbuild';
+import path from 'node:path';
+import assert from 'node:assert/strict';
+const out = path.resolve('out/motion-check.mjs');
+await build({entryPoints: ['src/kit/character/motion.ts'], bundle: true, format: 'esm', platform: 'node', outfile: out, logLevel: 'silent'});
+const m = await import(out + '?t=' + Date.now());
+const keys = [{f: 10, v: {lean: 0, head: [0, 0, 0]}}, {f: 30, v: {lean: 1, head: [0.4, 0, 0]}}];
+assert.equal(m.poseAt(0, keys).lean, 0, 'holds before first');
+assert.equal(m.poseAt(99, keys).lean, 1, 'holds after last');
+const mid = m.poseAt(20, [{f: 10, v: {lean: 0}}, {f: 30, v: {lean: 1}, ease: m.EASE.linear}]);
+assert.ok(Math.abs(mid.lean - 0.5) < 1e-9, 'lerp midpoint');
+assert.deepEqual(m.poseAt(17, keys), m.poseAt(17, keys), 'deterministic');
+const add = m.addPose({lean: 0.1, squash: 1}, {lean: 0.2, squash: 0.9}, 0.5);
+assert.ok(Math.abs(add.lean - 0.2) < 1e-9 && Math.abs(add.squash - 0.95) < 1e-9, 'additive');
+const s = (f) => m.springTo(f, 0, 0, 1);
+assert.ok(Math.abs(s(30) - 1) < 0.03, 'spring settles by 30 frames: ' + s(30));
+const ex = [{f: 0, v: {mouth: 'closed', eyeScale: 1}}, {f: 20, v: {mouth: 'o', eyeScale: 1.3}}];
+assert.equal(m.exprAt(10, ex).mouth, 'closed');
+assert.equal(m.exprAt(20, ex).mouth, 'o');
+assert.ok(m.exprAt(20, ex).blink > 0.9, 'blink hides switch');
+assert.ok(m.exprAt(10, ex).blink === 0 || m.exprAt(10, ex).blink < 0.01, 'no blink mid-segment');
+console.log('motion-check OK');

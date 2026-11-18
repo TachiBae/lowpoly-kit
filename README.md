@@ -27,7 +27,7 @@ Built on [Remotion](https://www.remotion.dev) + [react-three-fiber](https://r3f.
 ## Quick start
 
 ```bash
-git clone https://github.com/<you>/lowpoly-kit.git
+git clone https://github.com/TachiBae/lowpoly-kit.git
 cd lowpoly-kit
 npm ci
 npm run dev        # opens Remotion Studio: browse the Labs and ExampleShort
